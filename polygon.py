@@ -1,3 +1,8 @@
+__author__ = 'han wang'
+
+#Rubine features for single stroke a-z letters
+
+
 import os
 import re
 import csv
@@ -8,6 +13,7 @@ doc = []
 data = []
 features = []
 
+#load files. .xml data from Dr Tracy Hammond
 def catalog():
     for i in range(26):
         contents = os.walk('sketch\\'+str(3466+i))
@@ -19,6 +25,7 @@ def catalog():
             tmp = []
     return export
 
+#import original data 
 def getdata(filename):
     global doc
     global data
@@ -34,6 +41,7 @@ def getdata(filename):
     data = [tuple(x) for x in data]
     return data
 
+#write .csv file 
 def write(f):
     for i in collection:
         print i
@@ -43,6 +51,7 @@ def write(f):
     writer.writerows(collection)
     csvfile.close()
 
+#compute features
 def feature(data):
     global features
     tmp = (data[2][1]-data[0][1])/math.sqrt((data[2][1]-data[0][1])*(data[2][1]-data[0][1])+(data[2][2]-data[0][2])*(data[2][2]-data[0][2]))
